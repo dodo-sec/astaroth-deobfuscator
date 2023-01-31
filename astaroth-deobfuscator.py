@@ -1,5 +1,6 @@
 import idautils
 import idc
+import ida_bytes
 
 start = 0
 end = 0
@@ -14,5 +15,5 @@ for function in idautils.Functions():
             #Go forwards to include the call instruction (5 bytes long) to the hidden block
             end = x + 5
             #Hide it
-            idc.del_hidden_range(start)
-            idc.add_hidden_range(start,end,'','','',0xFFFFFF)
+            ida_bytes.del_hidden_range(start)
+            ida_bytes.add_hidden_range(start,end,'','','',0xFFFFFF)
